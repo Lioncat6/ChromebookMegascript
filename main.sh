@@ -24,6 +24,9 @@ CBMS_URL='https://raw.githubusercontent.com/Lioncat6/ChromebookMegascript/master
 #clear screen
 printf "\ec"
 
+echo -e "Chromebook Megascript version ${CBMS_VERSION}, last updated ${CBMS_DATE}"
+sleep 2
+echo -e "Checking connection to github"
 #check for internet
 echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
 
@@ -33,7 +36,7 @@ else
     echo -e "Cannot establish a connection to GitHub!\nAborting..."
     exit 0
 fi
-
+echo -e "Proceeding..."
 #Download other scripts
 cd /tmp
 echo -e "Downloading menu..."

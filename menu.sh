@@ -90,13 +90,20 @@ CBMS_LOGO="
 CBMS_LOGO_COLOR=${Green}
 CBMS_MENU_COLOR=${Cyan}
 
-CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&${Color_Off}"
 
 #Print Menu
 echo -e "${CBMS_MENU_DIV}"
-echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}"
-echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}"
+echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}${Color_Off}"
+echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}${Color_Off}"
 echo -e "${CBMS_MENU_DIV}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}1)${IYellow} Replace Firmware ${Yellow}using Mr Chomebox's Chromeos Divice Firmware Utility Script"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}3)${IYellow} Map top-row keys ${Yellow}using fascinatingcaptain's chromebook tweaks"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}1)${IYellow} Replace Firmware ${Yellow}using Mr Chomebox's Chromeos Divice Firmware Utility Script${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}3)${IYellow} Map top-row keys ${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   -${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}R)${IWhite} Reboot${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}P)${IWhite} Power Off${Color_Off}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}Q)${IWhite} Quit${Color_Off}"
+echo -e "${CBMS_MENU_DIV}"
+echo -e "${Yellow}Select one of the above options:${Color_Off}"
+read -p "${On_Red}" response
