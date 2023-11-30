@@ -29,7 +29,7 @@ URed='\033[4;31m'         # Red
 UGreen='\033[4;32m'       # Green
 UYellow='\033[4;33m'      # Yellow
 UBlue='\033[4;34m'        # Blue
-UPurple='\033[4;35m'      # Purple
+UPurple='\033[4;35m'      # PurpleColor_Off
 UCyan='\033[4;36m'        # Cyan
 UWhite='\033[4;37m'       # White
 
@@ -78,18 +78,24 @@ printf "\ec"
 
 #Vars
 CBMS_LOGO="
-   ******  ******         ****     ****  ********
-  **////**/*////**       /**/**   **/** **////// 
- **    // /*   /**       /**//** ** /**/**       
-/**       /******   *****/** //***  /**/*********
-/**       /*//// **///// /**  //*   /**////////**
-//**    **/*    /**      /**   /    /**       /**
- //****** /*******       /**        /** ******** 
-  //////  ///////        //         // ////////  
+      ******  ******         ****     ****  ********
+     **////**/*////**       /**/**   **/** **////// 
+    **    // /*   /**       /**//** ** /**/**       
+   /**       /******   *****/** //***  /**/*********
+   /**       /*//// **///// /**  //*   /**////////**
+   //**    **/*    /**      /**   /    /**       /**
+    //****** /*******       /**        /** ******** 
+     //////  ///////        //         // ////////  
 "
 CBMS_LOGO_COLOR=${Green}
 CBMS_MENU_COLOR=${Cyan}
 
+CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+
 #Print Menu
-echo -e ${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+echo -e "${CBMS_MENU_DIV}"
 echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}"
+echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CMBS_DATE}] - ${CMBS_VERSION}"
+echo -e "${CBMS_MENU_DIV}"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}1)${IYellow} Run Mr Chomebox's Chromeos Divice Firmware Utility Script"
+echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}2)${IYellow} Fix sound using WeirdTreeThing's Script"
