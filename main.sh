@@ -26,6 +26,14 @@ printf "\ec"
 
 echo -e "Chromebook Megascript version ${CBMS_VERSION}, last updated ${CBMS_DATE}"
 sleep 2
+
+#check superuser
+if [ "$EUID" -ne 0 ]
+    then echo -e "\033[0;91mThis script requires root to function. Please rerun as superuser or using sudo"
+    sleep 2 
+    exit
+fi
+
 echo -e "Checking connection to github"
 #check for internet
 echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1

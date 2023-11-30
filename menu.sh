@@ -73,9 +73,6 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
-# Clear screen
-printf "\ec"
-
 #Vars
 CBMS_LOGO="
       ******  ******         ****     ****  ********
@@ -92,18 +89,107 @@ CBMS_MENU_COLOR=${Cyan}
 
 CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&${Color_Off}"
 
+function cls(){
+      printf "\ec"
+}
+
+
+function disclaimer(){
+      cls
+      echo -e "${BIRed}Disclaimer:${Color_Off}"
+      echo -e "${IWhite}I am not responsible for any damage or bricking of your device${Color_Off}"
+      echo -e "${IWhite}Please type ${BIPurple}I ACCEPT${IWhite} to continue or ${BIPurple}Control+C${IWhite} to cancel${Color_Off}"
+      read -re disclaimerResponse
+      case "$disclaimerResponse" in
+            "I ACCEPT")
+                  true
+                  ;;
+            *)
+                  cls
+                  echo -e ${BIRed}"Try again or press ${BIPurple}Control+C${BIRed} to cancel${Color_Off}"
+                  sleep 2
+                  disclaimer
+                  ;;
+      esac
+
+}
+
+function requiresCustomFirmware(){
+      cls
+      echo -e "${BIGreen}Note:${Color_Off}"
+      echo -e "${IWhite}This option requires you to be running an OS other than ChromeOS${Color_Off}"
+      echo -e "${IWhite}If you are still inside ChromeOS, please run the Firmware script and install another operating system${Color_Off}"
+      echo -e "${IWhite}Press${BIPurple} Enter${IWhite} to continue${Color_Off}"
+      read -re
+}
+
+function downloadError(){
+      echo -e "${BIRed}There was an problem downloading files${Color_Off}"
+      echo -e "${IWhite}Press${BIPurple} Enter${IWhite} to continue${Color_Off}"
+      read -re
+}
+
+function mrChromebox(){
+      disclaimer
+      cls
+      echo -e "Loading Mr Chromebox's Firmware Utility Script..."
+      sleep 1
+      cd; curl -LOk mrchromebox.tech/firmware-util.sh || downloadError 
+      sudo bash firmware-util.sh 
+      mainMenu
+}
+
+function WeirdTreeThing(){
+      requiresCustomFirmware
+      disclaimer
+      cls
+      echo -e "Loading WeirdTreeThing's Audio Script..."
+      sleep 1
+      git clone https://github.com/WeirdTreeThing/chromebook-linux-audio || downloadError
+      cd chromebook-linux-audio 
+      ./setup-audio 
+      mainMenu
+
+}
+
 #Print Menu
-echo -e "${CBMS_MENU_DIV}"
-echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}${Color_Off}"
-echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}${Color_Off}"
-echo -e "${CBMS_MENU_DIV}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}1)${IYellow} Replace Firmware ${Yellow}using Mr Chomebox's Chromeos Divice Firmware Utility Script${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}3)${IYellow} Map top-row keys ${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   -${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}R)${IWhite} Reboot${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}P)${IWhite} Power Off${Color_Off}"
-echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}Q)${IWhite} Quit${Color_Off}"
-echo -e "${CBMS_MENU_DIV}"
-echo -e "${Yellow}Select one of the above options:${Color_Off}"
-read -p "${On_Red}" response
+function mainMenu() {
+      cls
+      echo -e "${CBMS_MENU_DIV}"
+      echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}${Color_Off}"
+      echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}${Color_Off}"
+      echo -e "${CBMS_MENU_DIV}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}1)${IYellow} Replace Firmware ${Yellow}using Mr Chomebox's Firmware Utility Script${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}3)${IYellow} Map top-row keys ${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   -${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}R)${IWhite} Reboot${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}P)${IWhite} Power Off${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}Q)${IWhite} Quit${Color_Off}"
+      echo -e "${CBMS_MENU_DIV}"
+      echo -e "${Yellow}Select one of the above options:${Color_Off}"
+      read -re response
+      case $response in 
+            1)
+            mrChromebox
+            ;;
+            2)
+            WeirdTreeThing
+            ;;
+            "Q")
+            exit
+            ;;
+            "P")
+            sudo shutdown -h now
+            ;;
+            "R")
+            sudo reboot
+            ;;
+            *)
+            mainMenu
+            ;;
+      esac
+
+
+}
+mainMenu
