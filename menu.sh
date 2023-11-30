@@ -95,7 +95,7 @@ CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 #Print Menu
 echo -e "${CBMS_MENU_DIV}"
 echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}"
-echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CMBS_DATE}] - ${CMBS_VERSION}"
+echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}"
 echo -e "${CBMS_MENU_DIV}"
 echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}1)${IYellow} Run Mr Chomebox's Chromeos Divice Firmware Utility Script"
 echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${IPurple}2)${IYellow} Fix sound using WeirdTreeThing's Script"
