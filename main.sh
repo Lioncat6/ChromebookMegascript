@@ -15,7 +15,7 @@
 #
 # Inspired by MrChromebox's scripts
 #
-#######################spell
+#######################
 #Set some variables to get this ball rolling
 
 CBMS_VERSION='0.0.1'
@@ -39,3 +39,6 @@ cd /tmp
 echo -e "Downloading menu..."
 curl -O ${CBMS_URL}menu.sh
 echo -e "Downloading other files..."
+#Nothing else to download at the moment :p
+
+source ./menu.sh
