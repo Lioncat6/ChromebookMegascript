@@ -37,6 +37,7 @@ fi
 #Download other scripts
 cd /tmp
 echo -e "Downloading menu..."
+rm ./menu.sh
 curl -O ${CBMS_URL}menu.sh
 echo -e "Downloading other files..."
 #Nothing else to download at the moment :p
