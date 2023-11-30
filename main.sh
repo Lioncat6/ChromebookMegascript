@@ -13,11 +13,16 @@
 # Created by Lioncat6:
 # https://github.com/Lioncat6
 #
+# Inspired by MrChromebox's scripts
+#
 #######################spell
 #Set some variables to get this ball rolling
 
 CBMS_VERSION='0.0.1'
 CBMS_DATE='11/29/23'
+CBMS_URL='https://raw.githubusercontent.com/Lioncat6/ChromebookMegascript/master/'
+#clear screen
+printf "\ec"
 
 #check for internet
 echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
@@ -25,6 +30,12 @@ echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     true
 else
-    echo "Cannot establish a connection to GitHub! Aborting..."
+    echo -e "Cannot establish a connection to GitHub!\nAborting..."
     exit 0
 fi
+
+#Download other scripts
+cd /tmp
+echo -e "Downloading menu..."
+curl -O ${CBMS_URL}menu.sh
+echo -e "Downloading other files..."
