@@ -19,7 +19,7 @@
 #Set some variables to get this ball rolling
 
 CBMS_VERSION='0.0.1'
-CBMS_DATE='11/29/23'
+CBMS_DATE='12/1/23'
 CBMS_URL='https://raw.githubusercontent.com/Lioncat6/ChromebookMegascript/master/'
 #clear screen
 printf "\ec"
