@@ -36,14 +36,14 @@ fi
 
 echo -e "Checking connection to github"
 #check for internet
-echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
-
-if [ $? -eq 0 ]; then
-    true
-else
-    echo -e "Cannot establish a connection to GitHub!\nAborting..."
-    exit 0
-fi
+#echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
+#
+#if [ $? -eq 0 ]; then
+#    true
+#else
+#    echo -e "Cannot establish a connection to GitHub!\nAborting..."
+#    exit 0
+#fi
 echo -e "Proceeding..."
 #Move into a temp direcotry cause why not.
 cd /tmp
