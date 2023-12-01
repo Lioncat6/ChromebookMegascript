@@ -1,6 +1,6 @@
 #!/bin/bash
 #Color codes:
-# Reset
+# Reset#Download other scripts
 Color_Off='\033[0m'       # Text Reset
 
 # Regular Colors
@@ -29,7 +29,7 @@ URed='\033[4;31m'         # Red
 UGreen='\033[4;32m'       # Green
 UYellow='\033[4;33m'      # Yellow
 UBlue='\033[4;34m'        # Blue
-UPurple='\033[4;35m'      # PurpleColor_Off
+UPurple='\033[4;35m'      # Purple
 UCyan='\033[4;36m'        # Cyan
 UWhite='\033[4;37m'       # White
 
@@ -84,11 +84,12 @@ CBMS_LOGO="
     //****** /*******       /**        /** ******** 
      //////  ///////        //         // ////////  
 "
-CBMS_LOGO_COLOR=${Green}
+CBMS_LOGO_COLOR=${IGreen}
 CBMS_MENU_COLOR=${Cyan}
 
 CBMS_MENU_DIV=${CBMS_MENU_COLOR}"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&${Color_Off}"
 
+# Function to quicly clear the terminal
 function cls(){
       printf "\ec"
 }
@@ -145,11 +146,35 @@ function WeirdTreeThing(){
       cls
       echo -e "Loading WeirdTreeThing's Audio Script..."
       sleep 1
+      rm -rf chromebook-linux-audio
       git clone https://github.com/WeirdTreeThing/chromebook-linux-audio || downloadError
       cd chromebook-linux-audio 
+      cls
+      echo -e "${BIWhite}For support please see ${UWhite}https://github.com/WeirdTreeThing/chromebook-linux-audio${Color_Off}"
       ./setup-audio 
       mainMenu
 
+}
+function remapKeys(){
+      requiresCustomFirmware
+      disclaimer
+      cls
+      echo -e "Loading Chromeos Key Remapping Script..."
+      sleep 1
+      rm -rf remap-util
+      git clone https://github.com/Lioncat6/remap-util || downloadError
+      cd remap-util 
+      cls
+      #echo -e "${BIWhite}For support please see ${UWhite}https://github.com/Lioncat6/remap-util${Color_Off}"
+      sudo bash remap-util.sh 
+      mainMenu
+}
+
+function helpMenu(){
+      cls
+      echo -e "${BIGreen}Help Menu Coming soon..."
+      sleep 2
+      mainMenu
 }
 
 #Print Menu
@@ -163,6 +188,8 @@ function mainMenu() {
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}3)${IYellow} Map top-row keys ${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   -${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BICyan}H)${IWhite} Help${Color_Off}"
+      echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   -${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}R)${IWhite} Reboot${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}P)${IWhite} Power Off${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIRed}Q)${IWhite} Quit${Color_Off}"
@@ -175,6 +202,12 @@ function mainMenu() {
             ;;
             2)
             WeirdTreeThing
+            ;;
+            3)
+            remapKeys
+            ;;
+            H)
+            helpMenu
             ;;
             "Q")
             exit

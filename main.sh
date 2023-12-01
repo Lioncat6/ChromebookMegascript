@@ -45,8 +45,9 @@ else
     exit 0
 fi
 echo -e "Proceeding..."
-#Download other scripts
+#Move into a temp direcotry cause why not.
 cd /tmp
+#Download other scripts
 echo -e "Downloading menu..."
 rm ./menu.sh
 curl -sLO ${CBMS_URL}menu.sh
