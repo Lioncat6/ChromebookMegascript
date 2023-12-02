@@ -125,6 +125,7 @@ function requiresCustomFirmware(){
 }
 
 function arguments(){
+      cls
       echo -e "${IWhite}Type any arguments you want to run the script with${Color_Off}"
       echo -e "${IWhite}Press${BIPurple} Enter${IWhite} to continue${Color_Off}"
       read -re commandArguments
