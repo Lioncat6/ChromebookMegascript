@@ -18,13 +18,12 @@
 #######################
 #Set some variables to get this ball rolling
 
-CBMS_VERSION='0.0.1'
-CBMS_DATE='12/1/23'
+CBMS_DATE='12/2/23'
 CBMS_URL='https://raw.githubusercontent.com/Lioncat6/ChromebookMegascript/master/'
 #clear screen
 printf "\ec"
 
-echo -e "Chromebook Megascript version ${CBMS_VERSION}, last updated ${CBMS_DATE}"
+echo -e "Chromebook Megascript - last updated ${CBMS_DATE}"
 sleep 2
 
 #check superuser
@@ -34,16 +33,10 @@ if [ "$EUID" -ne 0 ]
     exit
 fi
 
-echo -e "Checking connection to github"
+echo -e "Checking connection to github..."
 #check for internet
-#echo -e "GET http://github.com HTTP/1.0\n\n" | nc github.com 80 > /dev/null 2>&1
-#
-#if [ $? -eq 0 ]; then
-#    true
-#else
-#    echo -e "Cannot establish a connection to GitHub!\nAborting..."
-#    exit 0
-#fi
+curl -s https://github.com  > /dev/null || echo -e "Cannot establish a connection to GitHub!\nAborting..." ;exit 0
+
 echo -e "Proceeding..."
 #Move into a temp direcotry cause why not.
 cd /tmp

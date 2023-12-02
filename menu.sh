@@ -182,7 +182,7 @@ function mainMenu() {
       cls
       echo -e "${CBMS_MENU_DIV}"
       echo -e ${CBMS_LOGO_COLOR}"${CBMS_LOGO}${Color_Off}"
-      echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} [${CBMS_DATE}] - ${CBMS_VERSION}${Color_Off}"
+      echo -e "   ${UWhite}Chomebook Megascript by Lioncat6${White} - [${CBMS_DATE}]${Color_Off}"
       echo -e "${CBMS_MENU_DIV}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}1)${IYellow} Replace Firmware ${Yellow}using Mr Chomebox's Firmware Utility Script${Color_Off}"
       echo -e ${CBMS_MENU_COLOR}"&${Color_Off}   ${BIPurple}2)${IYellow} Fix sound ${Yellow}using WeirdTreeThing's Script${Color_Off}"
