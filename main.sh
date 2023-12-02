@@ -35,7 +35,12 @@ fi
 
 echo -e "Checking connection to github..."
 #check for internet
-curl -s https://github.com  > /dev/null || echo -e "Cannot establish a connection to GitHub!\nAborting..." ;exit 0
+function noInternet(){
+    echo -e "Cannot establish connection to github!\nAborting..."
+    exit
+}
+
+curl -s https://github.com  > /dev/null || noInternet 
 
 echo -e "Proceeding..."
 #Move into a temp direcotry cause why not.
