@@ -124,10 +124,16 @@ function requiresCustomFirmware(){
       read -re
 }
 
+function arguments(){
+      echo -e "${IWhite}Type any arguments you want to run the script with${Color_Off}"
+      echo -e "${IWhite}Press${BIPurple} Enter${IWhite} to continue${Color_Off}"
+      read -re commandArguments
+}
+
 function downloadError(){
       echo -e "${BIRed}There was an problem downloading files${Color_Off}"
       echo -e "${IWhite}Press${BIPurple} Enter${IWhite} to continue${Color_Off}"
-      read -re
+      read -re 
 }
 
 function mrChromebox(){
@@ -143,6 +149,7 @@ function mrChromebox(){
 function WeirdTreeThing(){
       requiresCustomFirmware
       disclaimer
+      arguments
       cls
       echo -e "Loading WeirdTreeThing's Audio Script..."
       sleep 1
@@ -151,7 +158,7 @@ function WeirdTreeThing(){
       cd chromebook-linux-audio 
       cls
       echo -e "${BIWhite}For support please see ${UWhite}https://github.com/WeirdTreeThing/chromebook-linux-audio${Color_Off}"
-      ./setup-audio 
+      ./setup-audio ${commandArguments}
       mainMenu
 
 }
