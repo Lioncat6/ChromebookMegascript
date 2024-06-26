@@ -143,7 +143,7 @@ function mrChromebox(){
       echo -e "Loading Mr Chromebox's Firmware Utility Script..."
       sleep 1
       cd; curl -LOk mrchromebox.tech/firmware-util.sh || downloadError 
-      sudo bash firmware-util.sh 
+      cd; sudo bash firmware-util.sh 
       mainMenu
 }
 
