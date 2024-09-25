@@ -144,6 +144,10 @@ function mrChromebox(){
       sleep 1
       cd; curl -LOk mrchromebox.tech/firmware-util.sh || downloadError 
       cd; sudo bash firmware-util.sh 
+      echo -e "${BIRed}Mr Chromebox's Firmware Utility Script has either exited or crashed!${Color_Off}"
+      sleep 1
+      echo -e "Returning to main menu in 5 seconds..."
+      sleep 5
       mainMenu
 }
 
